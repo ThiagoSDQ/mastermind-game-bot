@@ -1,14 +1,13 @@
 #Script for running the game on the terminal
-from Game import Game
-from InputField import InvalidInput
+import PasswordGame
 
-game = Game()
+game = PasswordGame.Game()
 
 while True:
     playerInput = input()
 
     if playerInput == "play":
-        game = Game()
+        game = PasswordGame.Game()
     elif playerInput == "stop":
         break
     elif playerInput == "next":
@@ -19,7 +18,7 @@ while True:
     elif game.status == game.PLAYING:
         try:
             game.attempt(playerInput)
-        except InvalidInput as exc:
+        except PasswordGame.InvalidInput as exc:
             print(exc.args[0])
 
     print(game)
