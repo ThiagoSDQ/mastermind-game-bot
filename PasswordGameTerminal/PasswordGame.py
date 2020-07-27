@@ -105,7 +105,7 @@ class Level:
     
 
 class Game:
-    difficulty = [(3, 10), (5, 10), (7, 14)]
+    difficulty = [(3, 10), (4, 10), (5, 14)]
     WON = 1
     PLAYING = 0
     LOST = -1
