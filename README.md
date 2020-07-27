@@ -1,2 +1,2 @@
 # mastermind-game-bot
-Discord bot for playing a game to discover a password of numbers
+Discord bot for playing different variations of the Mastermind game.
