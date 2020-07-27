@@ -1,5 +1,30 @@
 import random
 
+def _numberToEmoji_(n):
+    if n == "0":
+        return ":zero:"
+    elif n == "1":
+        return ":one:"
+    elif n == "2":
+        return ":two:"
+    elif n == "3":
+        return ":three:"
+    elif n == "4":
+        return ":four:"
+    elif n == "5":
+        return ":five:"
+    elif n == "6":
+        return ":six:"
+    elif n == "7":
+        return ":seven:"
+    elif n == "8":
+        return ":eight:"
+    elif n == "9":
+        return ":nine:"
+    else:
+        return n
+
+
 class InvalidInput(Exception):
     def __init__(self, message):
         self.message = message
@@ -8,23 +33,23 @@ class InputField:
     def __init__(self, digits):
         """Creates a InputField for a password with the given number of digits."""
         self.size = digits
-        self.password = [" " for i in range(digits)]
+        self.password = [":cd:" for i in range(digits)]
         self.rightNumberAndPosition = 0
         self.rightNumber = 0
 
     def __str__(self):
         ret = ""
         for x in self.password:
-            ret += x + " "
+            ret += _numberToEmoji_(x) + " "
         
-        ret += ": "
+        ret += "    "
 
         for i in range(self.rightNumberAndPosition):
-            ret += "■ "
+            ret += ":green_circle:  "
         for i in range(self.rightNumber):
-            ret += "# "
+            ret += ":yellow_circle:  "
         for i in range(self.size - self.rightNumber - self.rightNumberAndPosition):
-            ret += "_ "
+            ret += ":red_circle:  "
 
         return ret
 
@@ -63,6 +88,7 @@ class Level:
     def __init__(self, passwordSize, numberOfAttempts):
         """Create a level with certain password size and max number of attempts."""
         self.passwordSize = passwordSize
+        self.numberOfAttempts = numberOfAttempts
         
         self.password = ""
         for i in range(passwordSize):
@@ -82,13 +108,9 @@ class Level:
         ret = ""
 
         for x in self.password:
-            ret += (x if self.solved == True else "░") + " "
-        ret += "\n"
+            ret += (_numberToEmoji_(x) if self.solved == True or self.currentAttempt == self.numberOfAttempts else ":asterisk:") + " "
+        ret += ("   :unlock:" if self.solved == True else "   :lock:") + "\n\n"
 
-        for i in range(self.passwordSize):
-            ret += "--"
-        ret += "\n"
-        
         for attempt in self.attempts:
             ret += str(attempt) + "\n"
 
@@ -105,7 +127,7 @@ class Level:
     
 
 class Game:
-    difficulty = [(3, 10), (5, 10), (7, 14)]
+    difficulty = [(3, 10), (5, 10), (7, 10)]
     WON = 1
     PLAYING = 0
     LOST = -1
@@ -123,7 +145,7 @@ class Game:
         ret = ""
 
         if self.active == True:
-            ret = f"LEVEL {self.currentDifficulty+1}\n"
+            ret = f":regional_indicator_l: :regional_indicator_e: :regional_indicator_v: :regional_indicator_e: :regional_indicator_l:    {_numberToEmoji_(str(self.currentDifficulty+1))}\n\n"
             ret += str(self.level)
 
         return ret
