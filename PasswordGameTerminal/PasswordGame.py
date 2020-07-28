@@ -63,12 +63,11 @@ class Level:
     def __init__(self, passwordSize, numberOfAttempts):
         """Create a level with certain password size and max number of attempts."""
         self.passwordSize = passwordSize
-        
+        self.numberOfAttempts = numberOfAttempts
+
         self.password = ""
         for i in range(passwordSize):
             x = str(random.randint(0, 9))
-            while x in self.password:
-                x = str(random.randint(0, 9))
             
             self.password += x
 
@@ -82,11 +81,7 @@ class Level:
         ret = ""
 
         for x in self.password:
-            ret += (x if self.solved == True else "░") + " "
-        ret += "\n"
-
-        for i in range(self.passwordSize):
-            ret += "--"
+            ret += (x if self.solved == True or self.currentAttempt == self.numberOfAttempts else "░") + " "
         ret += "\n"
         
         for attempt in self.attempts:
