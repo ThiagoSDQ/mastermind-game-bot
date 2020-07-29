@@ -1,5 +1,5 @@
 # Mastermind Game Bot
-Discord bot for playing a game to discover a password of numbers
+Discord bot for playing different variations of the [Mastermind](https://en.wikipedia.org/wiki/Mastermind_(board_game)) game.
 
 ![bot on discord](https://github.com/ThiagoSDQ/mastermind-game-bot/blob/media/masterbot_lvl1.png?raw=true)
 
