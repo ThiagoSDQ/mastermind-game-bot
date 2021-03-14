@@ -10,7 +10,7 @@ First, you need to [create a Discord Bot Account](https://discordpy.readthedocs.
 DISCORD_TOKEN={put your bot's token here}
 ```
 
-Then invite the bot to your server and run `Bot.py`. Use 'p:rules' to see commands and game rules.
+Then invite the bot to your server and use `make run`. Use 'p:rules' to see commands and game rules.
 
 
 
