@@ -32,6 +32,7 @@ To use any command use the prefix \"{bot.command_prefix}\".\n\
 @bot.event
 async def on_ready():
     print("My Bot(y) is ready.")
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game("p:rules"))
 
 @bot.command()
 async def rules(ctx):
